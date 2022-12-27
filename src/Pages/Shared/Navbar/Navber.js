@@ -1,6 +1,7 @@
 // import React, { useContext } from 'react';
 // import toast from 'react-hot-toast';
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import '../../../CommonStyle/Common.css'
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -14,7 +15,7 @@ const Navbar = () => {
   const handleSignOut = () => {
     logOut()
     .then( () => {
-      // toast('Logout success')
+      toast.success('Logout success')
     })
     .catch(error => console.error(error))
     // console.log("clikd");
@@ -28,9 +29,9 @@ const Navbar = () => {
   <li><Link className='font-semibold' to="/message">Message</Link></li>
   <li><Link className='font-semibold' to="/login">Login</Link></li>
   <li><Link className='font-semibold' to="/register">Register</Link></li>
-  {
+  {/* {
     user?.uid &&  <li><Link className='font-semibold' to="/dashboard">Dashboard</Link></li>
-  }
+  } */}
  {
   user?.uid ?  <li><button onClick={handleSignOut}  className='btn btn-primary bg-gradient-to-r from-primary to-secondary text-white text-white font-bold'>Sign Out</button></li> :  <li><Link className='btn btn-primary bg-gradient-to-r from-primary to-secondary text-white text-white font-bold' to="/login">Login</Link></li>
  }
