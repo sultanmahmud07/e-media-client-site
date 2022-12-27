@@ -11,6 +11,7 @@ import Login from "../../Pages/Login/Login";
 import Media from "../../Pages/Media/Media";
 import Message from "../../Pages/Message/Message";
 import Register from "../../Pages/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router =createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router =createBrowserRouter([
         path: '/media',
         element: <Media></Media>
       },
+      // {
+      //   path: '/media',
+      //   element: <PrivateRoute><Media></Media></PrivateRoute>
+      // },
       {
         path: '/login',
         element: <Login></Login>
