@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import '../../../CommonStyle/Common.css'
 import { AuthContext } from '../../../contexts/AuthProvider';
+import Swal from 'sweetalert2'
 // import { Link } from 'react-router-dom';
 // import { AuthContext } from '../../../contexts/AuthProvider';
 // import logo from '../../../Assat/phone-img/shop (1).png'
@@ -15,7 +16,11 @@ const Navbar = () => {
   const handleSignOut = () => {
     logOut()
     .then( () => {
-      toast.success('Logout success')
+      Swal.fire(
+        'Your LogOut is Successfully',
+        '',
+        'success'
+      )
     })
     .catch(error => console.error(error))
     // console.log("clikd");
@@ -27,8 +32,7 @@ const Navbar = () => {
   <li><Link className='font-semibold' to="/media">Media</Link></li>
   <li><Link className='font-semibold' to="/about">About</Link></li>
   <li><Link className='font-semibold' to="/message">Message</Link></li>
-  <li><Link className='font-semibold' to="/login">Login</Link></li>
-  <li><Link className='font-semibold' to="/register">Register</Link></li>
+
   {/* {
     user?.uid &&  <li><Link className='font-semibold' to="/dashboard">Dashboard</Link></li>
   } */}

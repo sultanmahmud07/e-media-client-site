@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../../CommonStyle/Common.css';
 import { AuthContext } from '../../contexts/AuthProvider';
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const [error, setError] = useState('');
@@ -32,12 +33,14 @@ const Login = () => {
 
 
         setError('')
-        toast('Login successfully')
-        // Swal.fire(
-        //   'YourLogin is Successfully',
-        //   'Welcome to our shop!',
-        //   'success'
-        // )
+        // toast('Login successfully')
+        Swal.fire(
+          'YourLogin is Successfully',
+          'Welcome to our shop!',
+          'success'
+        )
+        navigate(from, {replace: true});
+        
       })
       .catch(error => {
         console.error(error)
