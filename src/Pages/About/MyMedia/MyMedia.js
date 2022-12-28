@@ -4,7 +4,7 @@ import { CgComment } from 'react-icons/cg';
 import { FaShare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const PostCurd = ({ media }) => {
+const MyMedia = ({media}) => {
   const { _id, img, likes, comment, text_description, user_name, user_img, address } = media;
   return (
     <div className="card card-compact w-full bg-base-100 shadow-2xl">
@@ -43,4 +43,4 @@ const PostCurd = ({ media }) => {
   );
 };
 
-export default PostCurd;
+export default MyMedia;

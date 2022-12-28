@@ -35,7 +35,7 @@ const Post = () => {
           img: imgData.data.url,
           live_link: "https://sq-doctors-lab.web.app/",
           address: "Dhaka, Bangladesh",
-          active: "extra",
+          active: user?.email,
           backup: "extra",
           likes: "0",
           comment: "0",

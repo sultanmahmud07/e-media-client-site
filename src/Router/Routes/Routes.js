@@ -50,7 +50,7 @@ export const router =createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About></About>
+        element: <PrivateRoute><About></About></PrivateRoute>
       },
       {
         path: '/message',
