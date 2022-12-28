@@ -5,6 +5,7 @@ import '../../CommonStyle/Common.css';
 import { AuthContext } from '../../contexts/AuthProvider';
 import logo from '../../assets/image/99119-know-your-customer-authentication.gif'
 import Swal from 'sweetalert2'
+import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
 const Login = () => {
   const [error, setError] = useState('');
@@ -83,6 +84,9 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <input type="submit" className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" value="Login" />
+              </div>
+              <div>
+                <GoogleLogin></GoogleLogin>
               </div>
             </form>
           </div>

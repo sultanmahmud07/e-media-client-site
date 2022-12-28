@@ -4,44 +4,67 @@ import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
-  const {createUser, updateUser} =useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [error, setError] = useState('')
 
 
   const handleSigiUp = (data) => {
     createUser(data.email, data.password)
-    .then(result => {
-      const user = result.user
-      console.log(user);
+      .then(result => {
+        const user = result.user
+        console.log(user);
 
-      const userInfo = {
-        displayName: data.name
-      }
-      updateUser(userInfo)
-        .then(() => {
-          toast.success("Your user name updated successfully")
-         
-          // saveUser(data.name, data.email, data.role)
+        const userInfo = {
+          displayName: data.name
+        }
+        updateUser(userInfo)
+          .then(() => {
+            toast.success("Your user name updated successfully")
 
-        })
-        .catch(err => console.log(err))
-    })
-    .catch(error => {
-      console.error(error)
-    })
+            saveUser(data.name, data.email, data.photo_url, data.university, data.address)
 
-
-    const userData = {
-      userName: data.name,
-      email: data.email,
-      password: data.password,
-      photoURL: data.photo_url,
-      university: data.university,
-      location: data.address
+          })
+          .catch(err => console.log(err))
+      })
+      .catch(error => {
+        console.error(error)
+      })
     }
-    console.log(userData);
 
+    // const userData = {
+    //   userName: data.name,
+    //   email: data.email,
+    //   password: data.password,
+    //   photoURL: data.photo_url,
+    //   university: data.university,
+    //   location: data.address
+    // }
+    // console.log(userData);
+
+
+    
+
+ 
+  // Post user information in database >>>>>>>
+  const saveUser = (userName, email, photoURL, university, location) => {
+    const user = { userName, email, photoURL, university, location };
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('save user', data);
+        // setCreateUserEmail(email)
+        // getUserToken(email)
+
+
+      })
+    // console.log(user);
   }
 
   return (

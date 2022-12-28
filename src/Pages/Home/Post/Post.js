@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import Swal from 'sweetalert2'
 
 const Post = () => {
   const {user} =useContext(AuthContext)
@@ -29,8 +30,8 @@ const Post = () => {
         // console.log(imgData.data.url);
         const media = {
           id: "67",
-          user_name: user?.displayName,
-          user_img: user?.PhotoURL ? user.PhotoURL : 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+          user_name: user?.displayName ? user?.displayName : "User Name",
+          user_img: user?.photoURL ? user?.photoURL : 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
           img: imgData.data.url,
           live_link: "https://sq-doctors-lab.web.app/",
           address: "Dhaka, Bangladesh",
@@ -42,6 +43,25 @@ const Post = () => {
 
         }
         console.log(media);
+                  // save product information to the database >>>>>
+                  fetch('http://localhost:5000/allMedia', {
+                    method: 'POST',
+                    headers: {
+                      'content-type': 'application/json',
+                      // authorization:  `bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(media)
+                  })
+                  .then(res => res.json())
+                  .then(result => {
+                    console.log(result);
+                    Swal.fire(
+                      `Your Post added successfully`,
+                      'You clicked the button!',
+                      'success'
+                    )
+                    // navigate('/dashboard/myproducts')
+                  })
       }
     })
 
