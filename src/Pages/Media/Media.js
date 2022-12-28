@@ -15,13 +15,16 @@ const Media = () => {
   return (
     <div className='common-w'>
       <h1 className='text-3xl '>This is Media section</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-20'>
         {
           medias.map(media => <PostCurd
           key={media._id}
           media={media}
           ></PostCurd>)
         }
+      </div>
+      <div>
+      <button className="btn btn-secondary my-12 text-white">See more</button>
       </div>
     </div>
   );
