@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
+import registerImg from '../../assets/image/register.gif'
+import { Link } from 'react-router-dom';
+import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
@@ -30,22 +33,22 @@ const Register = () => {
       .catch(error => {
         console.error(error)
       })
-    }
+  }
 
-    // const userData = {
-    //   userName: data.name,
-    //   email: data.email,
-    //   password: data.password,
-    //   photoURL: data.photo_url,
-    //   university: data.university,
-    //   location: data.address
-    // }
-    // console.log(userData);
+  // const userData = {
+  //   userName: data.name,
+  //   email: data.email,
+  //   password: data.password,
+  //   photoURL: data.photo_url,
+  //   university: data.university,
+  //   location: data.address
+  // }
+  // console.log(userData);
 
 
-    
 
- 
+
+
   // Post user information in database >>>>>>>
   const saveUser = (userName, email, photoURL, university, location) => {
     const user = { userName, email, photoURL, university, location };
@@ -69,12 +72,13 @@ const Register = () => {
 
   return (
     <div className='common-w pb-40'>
-      <div className='flex lg:flex-row flex-col'>
+      <h1 className='text-center text-4xl p-5 font-bold'>Register Now</h1>
+      <div className='flex lg:flex-row flex-col gap-5'>
         <div className='w-full'>
-          <h1>img</h1>
+          <img className='w-full' src={registerImg} alt="" />
         </div>
-        <div className='w-full'>
-          <h1 className='text-center text-4xl font-bold'>Register Now</h1>
+        <div className='w-full px-6'>
+          
           <form onSubmit={handleSubmit(handleSigiUp)}>
             <div className="form-control">
               <label className="label">
@@ -126,7 +130,17 @@ const Register = () => {
             <div className="form-control mt-6">
               <input type="submit" className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" value="SignUp" />
             </div>
+
           </form>
+          <p className='py-2'>Already have an account? <Link className='font-bold text-blue-800' to='/login'>Please login</Link></p>
+              <div className="flex flex-col w-full border-opacity-50">
+                {/* <div className="grid h-20 card bg-base-300 rounded-box place-items-center">content</div> */}
+                <div className="divider">OR</div>
+                {/* <div className="grid h-20 card bg-base-300 rounded-box place-items-center">content</div> */}
+              </div>
+              <div>
+                <GoogleLogin></GoogleLogin>
+              </div>
         </div>
       </div>
     </div>

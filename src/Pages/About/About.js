@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import Spinner from '../Shared/Spinner/Spinner';
 import MyMedia from './MyMedia/MyMedia';
 import Swal from 'sweetalert2'
+import Post from '../Home/Post/Post';
 
 const About = () => {
   const { user } = useContext(AuthContext);
@@ -86,8 +87,8 @@ const About = () => {
       {/* <h1>This is About section</h1> */}
       <div className='grid grid-cols-1 md:grid-cols-2 gap-5 pb-24'>
         <div className='w-full'>
-          <div className='flex justify-end'> <label htmlFor="my-modal-3" className="btn btn-accent">Edit</label></div>
-          <div className='flex flex-col items-center justify-center'>
+          <div className='flex justify-end bg-base-300'> <label htmlFor="my-modal-3" className="btn btn-accent">Edit</label></div>
+          <div className='flex flex-col bg-base-300 items-center justify-center'>
             <div className='w-full'>
               <div className="avatar justify-center w-full">
                 <div className="w-1/2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -110,8 +111,8 @@ const About = () => {
           <div className="modal">
             <div className="modal-box relative">
               <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-              <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
-              <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+              <h3 className="text-lg font-bold">Update your profiles information</h3>
+              {/* <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p> */}
               <div>
                 <form onSubmit={handleUpdateProfules} className='grid grid-cols-1 gap-3 mt-10'>
                   <span className='p-0 m-0 font-semibold'>Full name</span>
@@ -178,6 +179,7 @@ const About = () => {
           </div>
         </div>
         <div>
+          <Post></Post>
           <h1 className='p-5 font-bold text-3xl'>Recently post</h1>
           {
             mediaData.length !== 0 ?

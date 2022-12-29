@@ -41,7 +41,7 @@ const Login = () => {
           'Welcome to our shop!',
           'success'
         )
-        navigate(from, {replace: true});
+        navigate(from, { replace: true });
 
       })
       .catch(error => {
@@ -54,41 +54,50 @@ const Login = () => {
   }
   return (
     <div className='common-w'>
-      <div className="bg-base-100">
-        <div className="hero-content flex-col lg:flex-row">
-          <div className="text-center lg:text-left w-1/2">
-            <img className='w-2/3' src={logo} alt="" />
+      <div className="bg-base-100 mb-8">
+        <div className="flex gap-5 flex-col md:flex-row">
+          <div className="lg:mt-8">
+            <img className='w-full lg:w-5/6' src={logo} alt="" />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleLogin}>
-              <div>
-                <h3 className='text-2xl font-semibold text-center pb-5'>Login</h3>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Email</span>
-                </label>
-                <input type="email" name='email' required className="input input-bordered" />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Password</span>
-                </label>
-                <input type="password" name='password' required className="input input-bordered" />
-                <label className="label">
-                  <span className="label-text font-semibold text-red-700">{error}</span>
-                </label>
-                <label className="label">
-                  <Link to='/' className="label-text-alt link link-hover">Forgot password?</Link>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <input type="submit" className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" value="Login" />
+          <div className='lg:ml-8 lg:mt-8'>
+            <div className=" w-full  p-6 shadow-2xl ">
+              <form onSubmit={handleLogin}>
+                <div>
+                  <h3 className='text-2xl font-semibold text-center pb-5'>Login</h3>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text font-semibold">Email</span>
+                  </label>
+                  <input type="email" name='email' required className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text font-semibold">Password</span>
+                  </label>
+                  <input type="password" name='password' required className="input input-bordered" />
+                  <label className="label">
+                    <span className="label-text font-semibold text-red-700">{error}</span>
+                  </label>
+                  <label className="label">
+                    <Link to='/' className="label-text-alt link link-hover">Forgot password?</Link>
+                  </label>
+                </div>
+                <div className="form-control mt-6">
+                  <input type="submit" className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" value="Login" />
+                </div>
+
+              </form>
+              <p className='py-2'>Don't have an account? <Link className='font-bold text-blue-800' to='/register'>Create new account</Link></p>
+              <div className="flex flex-col w-full border-opacity-50">
+                {/* <div className="grid h-20 card bg-base-300 rounded-box place-items-center">content</div> */}
+                <div className="divider">OR</div>
+                {/* <div className="grid h-20 card bg-base-300 rounded-box place-items-center">content</div> */}
               </div>
               <div>
                 <GoogleLogin></GoogleLogin>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
