@@ -27,7 +27,7 @@ const PostCurd = ({ media }) => {
         <img className='w-full' src={img} alt="Shoes" /></div>
       <div className="card-body">
 
-        <div className="card-actions justify-between items-center pt-6 pb-20">
+        <div className="card-actions justify-between items-center pt-6 border-b-2 pb-2 mb-16">
           <div className="card-actions justify-between items-center w-1/2">
             <div className='flex items-center gap-2'><BiLike className='text-3xl cursor-pointer '></BiLike><span>{likes}</span></div>
             <div className='flex items-center gap-2'><CgComment className='text-3xl cursor-pointer'></CgComment><span>{comment}</span></div>

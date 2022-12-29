@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../CommonStyle/Common.css'
+import Spinner from '../Shared/Spinner/Spinner';
 import PostCurd from './PostCurd/PostCurd';
 
 const Media = () => {
@@ -17,7 +18,7 @@ const Media = () => {
   },[])
 
   if(loading){
-    return <div className='py-16'><progress className="progress w-full"></progress></div>
+    return <div className='py-40'><Spinner></Spinner></div>
   }
   console.log(medias)
   return (
