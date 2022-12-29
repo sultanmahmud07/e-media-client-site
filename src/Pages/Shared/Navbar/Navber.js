@@ -41,7 +41,7 @@ const Navbar = () => {
  }
 </React.Fragment>
   return (
-    <div className='shadow-lg mb-5'>
+    <div className='shadow-lg mb-5 '>
       <div className='common-w'>
         <div className="navbar flex justify-between">
           <div className="navbar-start">

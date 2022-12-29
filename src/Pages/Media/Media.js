@@ -4,17 +4,25 @@ import PostCurd from './PostCurd/PostCurd';
 
 const Media = () => {
   const  [medias, setMedias] = useState([]);
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
     fetch('https://e-media-server-site.vercel.app/allMedia')
     .then(res => res.json())
-    .then(data => setMedias(data))
+    .then(data => {
+      setMedias(data)
+      setLoading(false);
+    })
   },[])
+
+  if(loading){
+    return <div className='py-16'><progress className="progress w-full"></progress></div>
+  }
   console.log(medias)
   return (
     <div className='common-w'>
-      <h1 className='text-3xl '>This is Media section</h1>
+      <h1 className='text-3xl py-9 font-bold'>People's posts</h1>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-20'>
         {
           medias.map(media => <PostCurd
