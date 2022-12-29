@@ -34,7 +34,7 @@ export const router =createBrowserRouter([
       {
         path: '/details/:id',
         element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/allMedia/${params.id}`)
+        loader: ({params}) => fetch(`https://e-media-server-site.vercel.app/allMedia/${params.id}`)
       },
       // {
       //   path: '/media',

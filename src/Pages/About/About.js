@@ -11,7 +11,7 @@ const About = () => {
   const navigation = useNavigation();
   const navigate = useNavigate()
   // const url = `https://final-project-server-zeta.vercel.app/bookings?email=${user?.email}`
-  const url = `http://localhost:5000/users/${user?.email}`
+  const url = `https://e-media-server-site.vercel.app/users/${user?.email}`
 
   useEffect(() => {
     fetch(url)
@@ -21,7 +21,7 @@ const About = () => {
 
 
   // user all post data loaded 
-  const urlTow = `http://localhost:5000/allMedias?email=${user?.email}`
+  const urlTow = `https://e-media-server-site.vercel.app/allMedias?email=${user?.email}`
   useEffect(() => {
     fetch(urlTow)
       .then(res => res.json())
@@ -48,7 +48,7 @@ const About = () => {
     }
     console.log(newData);
     // console.log('object');
-    fetch(`http://localhost:5000/users/${data._id}`, {
+    fetch(`https://e-media-server-site.vercel.app/users/${data._id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'

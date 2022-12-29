@@ -49,7 +49,7 @@ const Register = () => {
   // Post user information in database >>>>>>>
   const saveUser = (userName, email, photoURL, university, location) => {
     const user = { userName, email, photoURL, university, location };
-    fetch('http://localhost:5000/users', {
+    fetch('https://e-media-server-site.vercel.app/users', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

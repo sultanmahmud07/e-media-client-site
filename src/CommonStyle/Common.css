@@ -2,3 +2,8 @@
   width: 84%;
   margin: auto;
 }
+.post-banner{
+  background-image:linear-gradient(rgba(16, 40, 254, 0.375), rgba(120, 15, 240, 0.627)), url(../assets/post-img.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

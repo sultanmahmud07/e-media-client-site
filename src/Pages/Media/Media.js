@@ -7,7 +7,7 @@ const Media = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/allMedia')
+    fetch('https://e-media-server-site.vercel.app/allMedia')
     .then(res => res.json())
     .then(data => setMedias(data))
   },[])
