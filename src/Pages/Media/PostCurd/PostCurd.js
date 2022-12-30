@@ -7,17 +7,17 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const PostCurd = ({ media }) => {
-  const {user} =useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const { _id, img, likes, comment, text_description, user_name, user_img, address } = media;
   const [like, setLike] = useState(0);
 
   const handleLike = () => {
-    if(user?.email){
+    if (user?.email) {
       setLike(1);
       toast.success("liked")
-      
+
     }
-    else{
+    else {
       toast.error("Please login before liking")
     }
   }
@@ -26,7 +26,7 @@ const PostCurd = ({ media }) => {
 
     toast((t) => (
       <span>
-        This feature is still being<b>worked on</b> 
+        This feature is still being<b>worked on</b>
         <button onClick={() => toast.dismiss(t.id)}>
           Dismiss
         </button>
@@ -38,8 +38,8 @@ const PostCurd = ({ media }) => {
     <div className="card relative card-compact w-full bg-base-100 shadow-2xl">
       <div>
         <div className='flex justify-start p-3'>
-          <div class="avatar online w-14">
-            <div class="w-24 rounded-full">
+          <div className="avatar online w-14">
+            <div className="w-24 rounded-full">
               <img src={user_img} />
             </div>
           </div>
@@ -57,8 +57,8 @@ const PostCurd = ({ media }) => {
 
         <div className="card-actions justify-between items-center pt-6 border-b-2 pb-2 mb-16">
           <div className="card-actions justify-between items-center w-1/2">
-          <div onClick={() => {handleLike()}} className='flex items-center gap-2'><BiLike className='text-3xl cursor-pointer '></BiLike><span className='font-bold text-xl'>{parseFloat(likes) + like}</span> Link</div>
-              <div className='flex items-center gap-2'><CgComment className='text-3xl cursor-pointer'></CgComment><span className='font-bold text-xl'>{comment}</span> Comment</div>
+            <div onClick={() => { handleLike() }} className='flex items-center gap-2'><BiLike className='text-3xl cursor-pointer '></BiLike><span className='font-bold text-xl'>{parseFloat(likes) + like}</span> Link</div>
+            <div className='flex items-center gap-2'><CgComment className='text-3xl cursor-pointer'></CgComment><span className='font-bold text-xl'>{comment}</span> Comment</div>
 
             <FaShare className='text-3xl cursor-pointer'></FaShare>
           </div>

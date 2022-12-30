@@ -49,8 +49,8 @@ const PostDetails = () => {
       <div className="card relative card-compact w-full bg-base-100 shadow-2xl  pb-28">
         <div>
           <div className='flex justify-start p-3'>
-            <div class="avatar online w-14">
-              <div class="w-24 rounded-full">
+            <div className="avatar online w-14">
+              <div className="w-24 rounded-full">
                 <img src={user_img} />
               </div>
             </div>

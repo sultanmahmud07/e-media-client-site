@@ -20,7 +20,7 @@ const Media = () => {
   if(loading){
     return <div className='py-40'><Spinner></Spinner></div>
   }
-  console.log(medias)
+  // console.log(medias)
   return (
     <div className='common-w'>
       <h1 className='text-3xl py-9 font-bold'>People's posts</h1>

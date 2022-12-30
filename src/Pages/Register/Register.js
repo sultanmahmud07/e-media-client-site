@@ -3,13 +3,14 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 import registerImg from '../../assets/image/register.gif'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [error, setError] = useState('')
+  const navigate =useNavigate();
 
 
   const handleSigiUp = (data) => {
@@ -17,13 +18,14 @@ const Register = () => {
       .then(result => {
         const user = result.user
         console.log(user);
-
+        navigate('/');
+        setError('')
         const userInfo = {
           displayName: data.name
         }
         updateUser(userInfo)
           .then(() => {
-            toast.success("Your user name updated successfully")
+            toast.success("Your Register Successfully")
 
             saveUser(data.name, data.email, data.photo_url, data.university, data.address)
 
@@ -32,6 +34,7 @@ const Register = () => {
       })
       .catch(error => {
         console.error(error)
+        setError(error)
       })
   }
 
@@ -124,6 +127,7 @@ const Register = () => {
               </label>
               <input type="text" placeholder='enter your location' {...register("address", { required: true })} className="input input-bordered" />
               {errors.name && <span className='text-red-700'>Please provited your location</span>}
+              <span className='text-red-700'>{error}</span>
             </div>
 
 

@@ -35,8 +35,8 @@ const About = () => {
       })
   }, [])
 
-  console.log(data);
-  console.log(mediaData);
+  // console.log(data);
+  // console.log(mediaData);
 
   const handleUpdateProfules = event => {
     event.preventDefault();
