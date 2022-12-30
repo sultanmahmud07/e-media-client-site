@@ -1,14 +1,49 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { BiLike } from 'react-icons/bi';
 import { CgComment } from 'react-icons/cg';
 import { FaShare } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigation } from 'react-router-dom';
 import '../../../CommonStyle/Common.css'
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const PostDetails = () => {
+  const {user} =useContext(AuthContext);
   const { id, _id, img, likes, comment, user_name, user_img, address, text_description } = useLoaderData();
-  console.log((id));
+  // console.log((id));
+  const [like, setLike] =useState(0);
+  const navigation = useNavigation();
+
+  const handleLike = () => {
+    if(user?.email){
+      setLike(1);
+      toast.success("liked")
+    }
+    else{
+      toast.error("Please login before liking")
+    }
+  
+  } 
+  const handleComment = () => {
+
+    toast((t) => (
+      <span>
+        This feature is still being<b>worked on</b> 
+        <button onClick={() => toast.dismiss(t.id)}>
+          Dismiss
+        </button>
+      </span>
+    ));
+    // toast.success("Comment")
+  }
+
+  
+  if(navigation.state === "loading"){
+    return <p>Loading....</p>
+  }
+
+// console.log(like);
   return (
     <div className='common-w'>
       <div className="card relative card-compact w-full bg-base-100 shadow-2xl  pb-28">
@@ -26,11 +61,11 @@ const PostDetails = () => {
           </div>
           <img className='w-full' src={img} alt="Shoes" /></div>
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
+          <h2 className="card-title">Text Contain</h2>
           <p>{text_description}</p>
           <div className="card-actions justify-between items-center border-t-2 pb-10">
             <div className="card-actions justify-between items-center w-1/2">
-              <div className='flex items-center gap-2'><BiLike className='text-3xl cursor-pointer '></BiLike><span>{likes}</span> Link</div>
+              <div onClick={() => {handleLike()}} className='flex items-center gap-2'><BiLike className='text-3xl cursor-pointer '></BiLike><span>{parseFloat(likes) + like}</span> Link</div>
               <div className='flex items-center gap-2'><CgComment className='text-3xl cursor-pointer'></CgComment><span>{comment}</span> Comment</div>
 
               <div className='flex items-center gap-2'><FaShare className='text-3xl cursor-pointer'></FaShare><span>23</span> Share</div>
@@ -44,7 +79,7 @@ const PostDetails = () => {
           <div className=' bottom-0 left-0 w-full p-5'>
             <div className="relative w-full">
               <input type="text" placeholder="Add your comment" className="input input-bordered w-full pr-16" />
-              <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white absolute top-0 right-0 rounded-l-none">Comment</button>
+              <button onClick={handleComment} className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white absolute top-0 right-0 rounded-l-none">Comment New</button>
             </div>
           </div>
         </div>
